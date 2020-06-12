@@ -49,10 +49,10 @@ git config --global user.email "$INPUT_USER_EMAIL"
 
 set -o xtrace
 
-git fetch origin $INPUT_STABLE_BRANCH
+git pull origin $INPUT_STABLE_BRANCH --allow-unrelated-histories
 git checkout -B $INPUT_STABLE_BRANCH origin/$INPUT_STABLE_BRANCH
 
-git fetch origin $INPUT_DEVELOPMENT_BRANCH
+git pull origin $INPUT_DEVELOPMENT_BRANCH --allow-unrelated-histories
 git checkout -B $INPUT_DEVELOPMENT_BRANCH origin/$INPUT_DEVELOPMENT_BRANCH
 
 if git merge-base --is-ancestor $INPUT_STABLE_BRANCH $INPUT_DEVELOPMENT_BRANCH; then
